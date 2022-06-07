@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'parliament-party-list';
+  party_names: string[] = [];
+  filter_string = '';
 }

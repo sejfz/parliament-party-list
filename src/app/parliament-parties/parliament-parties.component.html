@@ -1,4 +1,4 @@
-<p>parliament-parties works!</p>
-<div *ngFor="let person of parliament_members">
-    <app-person-card [input]="person"></app-person-card>
-</div>
+<div *ngIf="loadingData"><h3>Laddar...</h3></div>
+<section *ngFor="let party of parties" [id]="'section_party_'+party.name.toLowerCase()">
+    <app-party-container [input]="party"></app-party-container>
+</section>

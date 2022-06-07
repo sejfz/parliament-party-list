@@ -1,0 +1,38 @@
+<div class="card mb-3">
+    <div class="card-header" [class]="party.name.toLowerCase()+'-bg'">
+        <div class="filter_row p-2">
+            <img class="party_logo outline-img" [src]="'assets/'+party.name+'.png'" [alt]="party.name" onerror="this.style.display = 'none'">
+            <div class="filters">
+                <div>
+                    <label for="sort_members" class="form-label">Sortera</label>
+                    <div class="input-group">
+                        <select class="form-select" id="sort_members" [(ngModel)]="party.sort_value.value" (ngModelChange)="party.sortMembers(party.sort_actions[party.sort_value.value], party.sort_value.asc)">
+                            <option *ngFor="let o of party.sort_options" [value]="o.value">{{o.title}}</option>
+                        </select>
+                        <select class="form-select" [(ngModel)]="party.sort_value.asc" (ngModelChange)="party.sortMembers(party.sort_actions[party.sort_value.value], party.sort_value.asc)">
+                            <option [ngValue]="true">Stigande</option>
+                            <option [ngValue]="false">Fallande</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="ms-2">
+                    <label for="filter_text" class="form-label">Filtrera</label>
+                    <input id="filter_text" placeholder="Sök på namn..." class="form-control" [(ngModel)]="party.filter_string" (ngModelChange)="party.filterMembers(party.filter_string, min_age, max_age)">
+                </div>
+                <div class="ms-2">
+                    <label for="filter_age" class="form-label">Åldrar mellan</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control age_input" min="0" placeholder="Från" [(ngModel)]="min_age" (ngModelChange)="party.filterMembers(party.filter_string, min_age, max_age)">
+                        <span class="input-group-text">-</span>
+                        <input type="number" class="form-control age_input" min="0" placeholder="Till" [(ngModel)]="max_age" (ngModelChange)="party.filterMembers(party.filter_string, min_age, max_age)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" [class]="party.name.toLowerCase()+'-bg-light'">
+        <div class="party_members">
+            <app-person-card *ngFor="let person of party.filtered_members" [input]="person"></app-person-card>
+        </div>
+    </div>
+</div>

@@ -1,14 +1,18 @@
-<nb-card>
-    <nb-card-body>
+<div class="card member_card" [style.border]="'$'+person_data.parti+'-bg solid 1px'">
+    <div class="card-body text-black">
         <div class="card-grid">
             <div class="img_container">
                 <img class="profile_img" [src]="person_data.bild_url_192">
             </div>
-            <div class="info_container">
-                <h4 class="person_name">
-                    {{person_data.tilltalsnamn}} {{person_data.efternamn}}
-                </h4>
+            <div class="info_container ms-3 d-flex justify-content-between flex-column">
+                <div>
+                    <h5 class="person_name card-title">
+                        {{person_data.tilltalsnamn}} {{person_data.efternamn}}
+                    </h5>
+                    <p class="card-text">Född: {{person_data.fodd_ar}} ({{member_age}} år)</p>
+                </div>
+                <p class="card-text"><small class="text-muted">Valkrets: {{person_data.valkrets}}</small></p>
             </div>
         </div>
-    </nb-card-body>
-</nb-card>
+    </div>
+</div>

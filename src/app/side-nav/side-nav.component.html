@@ -1,0 +1,13 @@
+
+<div class="sidenav-links">
+    <a  class="btn" 
+        [class.mt-2]="i>0"
+        [class]="p.toLowerCase()+'-bg'"
+        *ngFor="let p of parties; let i = index" 
+        [href]="'#section_party_'+p.toLowerCase()" 
+    >
+        <h5 class="m-0 p-0">
+            {{p}}
+        </h5>
+    </a>
+</div>

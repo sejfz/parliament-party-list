@@ -1,0 +1,28 @@
+#page-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    // background-color: antiquewhite;
+}
+// #page-header {
+//     grid-column-start: 1;
+//     grid-column-end: -1;
+// }
+
+#nav-sidebar {
+    height: 100%;
+    min-width: 7rem;
+    border-right: solid 1px lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row-start: 1;
+    grid-row-end: -1;
+}
+
+#main-container {
+    padding: 2rem;
+    overflow: auto;
+    scroll-behavior: smooth;
+}

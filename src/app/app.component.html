@@ -1,15 +1,13 @@
-<nb-layout>
+<div id="page-container">
+  <!-- <div id="page-header">
+    <app-header (filter_output)="filter_string = $event"></app-header>
+  </div> -->
+  <div id="nav-sidebar" class="bg-info">
+    <app-side-nav [parties]="party_names"></app-side-nav>
+  </div>
+  
+  <div id="main-container">
+    <app-parliament-parties [filter_string]="filter_string" (parties_output)="party_names = $event"></app-parliament-parties>
+  </div>
 
-  <nb-layout-header fixed>
-  <!-- Insert header here -->
-  </nb-layout-header>
-
-  <nb-layout-column>
-    <app-parliament-parties></app-parliament-parties>
-  </nb-layout-column>
-
-  <nb-layout-footer fixed>
-  <!-- Insert footer here -->
-  </nb-layout-footer>
-
-</nb-layout>
+</div>

@@ -1,8 +1,122 @@
 @use 'themes' as *;
 
-@use '@nebular/theme/styles/globals' as *;
+// @use '@nebular/theme/styles/globals' as *;
 
-@include nb-install() {
-  @include nb-theme-global();
-};
+// @include nb-install() {
+//   @include nb-theme-global();
+// };
 /* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/scss/bootstrap";
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+$s-bg: 	#E8112d; //socialdemokraterna bg
+$s-bg-light: 	#dd5a6b; //socialdemokraterna bg
+
+$m-bg: 	#52BDEC; //moderaterna bg
+$m-bg-light: 	#96c9df; //moderaterna bg
+
+$sd-bg: #DDDD00; //sverigedemokraterna bg
+$sd-bg-light:rgb(212, 212, 153); //sverigedemokraterna bg
+
+$c-bg: 	#009933; //centerpartiet bg
+$c-bg-light: 	#7d9b87; //centerpartiet bg
+
+$v-bg: 	#DA291C; //vänsterpartiet bg
+$v-bg-light: 	#cf7a74; //vänsterpartiet bg
+
+$mp-bg: #83CF39; //miljöpartiet bg
+$mp-bg-light: #aecc91; //miljöpartiet bg
+
+$kd-bg: #000077; //kristdemokraterna bg
+$kd-bg-light: #505072; //kristdemokraterna bg
+
+$l-bg:  #006AB3; //liberalerna bg
+$l-bg-light:  #5f8aa7; //liberalerna bg
+
+
+.s-bg {
+  background-color: $s-bg!important;
+  color: white!important;
+}
+.s-bg-light {
+  background-color: $s-bg-light!important;
+  color: white!important;
+}
+
+.m-bg {
+  background-color: $m-bg!important;
+  color: white!important;
+}
+.m-bg-light {
+  background-color: $m-bg-light!important;
+  color: white!important;
+}
+
+.sd-bg {
+  background-color: $sd-bg!important;
+  color: white!important;
+}
+.sd-bg-light {
+  background-color: $sd-bg-light!important;
+  color: white!important;
+}
+
+.c-bg {
+  background-color: $c-bg!important;
+  color: white!important;
+}
+.c-bg-light {
+  background-color: $c-bg-light!important;
+  color: white!important;
+}
+
+.v-bg {
+  background-color: $v-bg!important;
+  color: white!important;
+}
+.v-bg-light {
+  background-color: $v-bg-light!important;
+  color: white!important;
+}
+
+.mp-bg {
+  background-color: $mp-bg!important;
+  color: white!important;
+}
+.mp-bg-light {
+  background-color: $mp-bg-light!important;
+  color: white!important;
+}
+
+.kd-bg {
+  background-color: $kd-bg!important;
+  color: white!important;
+}
+.kd-bg-light {
+  background-color: $kd-bg-light!important;
+  color: white!important;
+}
+
+.l-bg {
+  background-color: $l-bg!important;
+  color: white!important;
+}
+.l-bg-light {
+  background-color: $l-bg-light!important;
+  color: white!important;
+}
+
+.outline-img {
+  filter: drop-shadow(5px 0 0 white) 
+        drop-shadow(0 5px 0 white)
+        drop-shadow(-5px 0 0 white) 
+        drop-shadow(0 -5px 0 white);
+}

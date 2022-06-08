@@ -23,13 +23,11 @@ export class ParliamentPartiesComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log({changes})
     this.filterAll(this.filter_string, this.min_age, this.max_age, {value: this.sort_value, asc: this.sort_asc})
   }
 
   async ngOnInit(): Promise<any> {
-    let res = await this.callApi('http://data.riksdagen.se/personlista/?utformat=json');
-    console.log({res})
+    let res = await this.callApi('https://data.riksdagen.se/personlista/?utformat=json');
     this.parliament_members = res.personlista.person;
     this.parties = this.subArrays(res.personlista.person, 'parti');
     this.parties_output.emit(this.parties.map(p => {return p.name}));
@@ -65,9 +63,6 @@ export class ParliamentPartiesComponent implements OnInit {
 
     arr.map(item => {
       let exist_index = party_arr.findIndex(i => i.name === item[prop]);
-      if (!item[prop]) {
-        console.log(item)
-      }
       if (exist_index >= 0) {
         party_arr[exist_index].addMember(item);
       } else {

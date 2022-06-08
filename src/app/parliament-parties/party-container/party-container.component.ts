@@ -17,7 +17,6 @@ export class PartyContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.party);
     this.party.filterMembers('', this.min_age, this.max_age);
   }
 }

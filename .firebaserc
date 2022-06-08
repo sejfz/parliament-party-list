@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "parliament-member-list": {
+      "hosting": {
+        "parliament-party-list": [
+          "parliament-member-list"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "parliament-member-list"
+  }
+}

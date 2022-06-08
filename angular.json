@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "parliament-party-list:build:production",
+            "firebaseProject": "parliament-member-list",
+            "firebaseHostingSite": "parliament-member-list"
+          }
         }
       }
     }

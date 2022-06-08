@@ -1,3 +1,29 @@
 <div id="header-content" class="bg-info">
-    <input class="form-control" placeholder="Sök namn..." [(ngModel)]="name_search" (ngModelChange)="filter_output.emit(name_search)">
+    <!-- <input class="form-control" placeholder="Sök namn..." [(ngModel)]="name_search" (ngModelChange)="filter_output.emit(filter_params)"> -->
+    <div class="filters">
+        <div>
+            <label for="sort_members" class="form-label">Sortera</label>
+            <div class="input-group">
+                <select class="form-select" id="sort_members" [(ngModel)]="sort_value.value" (ngModelChange)="filter_output.emit({sort_value,filter_params})">
+                    <option *ngFor="let o of sort_options" [value]="o.value">{{o.title}}</option>
+                </select>
+                <select class="form-select" [(ngModel)]="sort_value.asc" (ngModelChange)="filter_output.emit({sort_value,filter_params})">
+                    <option [ngValue]="true">Stigande</option>
+                    <option [ngValue]="false">Fallande</option>
+                </select>
+            </div>
+        </div>
+        <div class="ms-2">
+            <label for="filter_text" class="form-label">Filtrera</label>
+            <input id="filter_text" placeholder="Sök på namn..." class="form-control" [(ngModel)]="filter_params.filter_string" (ngModelChange)="filter_output.emit({sort_value,filter_params})">
+        </div>
+        <div class="ms-2">
+            <label for="filter_age" class="form-label">Åldrar mellan</label>
+            <div class="input-group">
+                <input type="number" class="form-control age_input" min="0" placeholder="Från" [(ngModel)]="filter_params.min_age" (ngModelChange)="filter_output.emit({sort_value,filter_params})">
+                <span class="input-group-text">-</span>
+                <input type="number" class="form-control age_input" min="0" placeholder="Till" [(ngModel)]="filter_params.max_age" (ngModelChange)="filter_output.emit({sort_value,filter_params})">
+            </div>
+        </div>
+    </div>
 </div>

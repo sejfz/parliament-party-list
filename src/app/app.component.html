@@ -1,13 +1,20 @@
 <div id="page-container">
-  <!-- <div id="page-header">
-    <app-header (filter_output)="filter_string = $event"></app-header>
-  </div> -->
+  <div id="page-header">
+    <app-header (filter_output)="handle_output($event)"></app-header>
+  </div>
   <div id="nav-sidebar" class="bg-info">
     <app-side-nav [parties]="party_names"></app-side-nav>
   </div>
   
   <div id="main-container">
-    <app-parliament-parties [filter_string]="filter_string" (parties_output)="party_names = $event"></app-parliament-parties>
+    <app-parliament-parties 
+      [sort_value]="sort_value" 
+      [sort_asc]="sort_asc" 
+      [min_age]="min_age" 
+      [max_age]="max_age" 
+      [filter_string]="filter_string" 
+      (parties_output)="party_names = $event"
+    ></app-parliament-parties>
   </div>
 
 </div>

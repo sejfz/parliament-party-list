@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-parliament-parties',
@@ -10,12 +10,21 @@ export class ParliamentPartiesComponent implements OnInit {
   parties: Array<any>;
   loadingData: boolean = false;
   @Output() parties_output = new EventEmitter<string[]>();
-  @Input() filter_string: string;
+  @Input() filter_params: any;
+  @Input() sort_value: string = 'first_name';
+  @Input() min_age: number = 0;
+  @Input() max_age: number = 100;
+  @Input() filter_string: string = '';
+  @Input() sort_asc: boolean = true;
 
   constructor() {
     this.parliament_members = [];
     this.parties = [];
-    this.filter_string = '';
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log({changes})
+    this.filterAll(this.filter_string, this.min_age, this.max_age, {value: this.sort_value, asc: this.sort_asc})
   }
 
   async ngOnInit(): Promise<any> {
@@ -55,7 +64,6 @@ export class ParliamentPartiesComponent implements OnInit {
     let party_arr: Array<Party> = [];
 
     arr.map(item => {
-      console.log({item, party_arr})
       let exist_index = party_arr.findIndex(i => i.name === item[prop]);
       if (!item[prop]) {
         console.log(item)
@@ -66,8 +74,16 @@ export class ParliamentPartiesComponent implements OnInit {
         party_arr.push(new Party(item[prop], [item]));
       }
     })
-    console.log({party_arr})
     return party_arr;
+  }
+  filterAll(str: string, min_age: number, max_age: number, sort_value?: any) {
+    this.parties.forEach(p => {
+      if (sort_value) {
+        p.sort_value.value = sort_value.value;
+        p.sort_value.asc = sort_value.asc;
+      }
+      p.filterMembers(str, min_age, max_age);
+    })
   }
 }
 
@@ -129,10 +145,13 @@ export class Party {
   }
 
   filterMembers(str: string, min_age: number = 0, max_age: number = 100) {
-    console.log({min_age, max_age})
     this.filtered_members = this.members.filter((f:any) => {
       return (
-        (f.tilltalsnamn.toLowerCase().includes(str.toLowerCase()) || f.efternamn.toLowerCase().includes(str.toLowerCase()))
+        (
+          f.tilltalsnamn.toLowerCase().includes(str.toLowerCase()) 
+          || 
+          f.efternamn.toLowerCase().includes(str.toLowerCase())
+        )
         &&
         (
           Number(f.fodd_ar) <= new Date().getFullYear() - min_age
